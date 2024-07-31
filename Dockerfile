@@ -5,7 +5,7 @@ COPY . .
 RUN apt-get install maven -y
 RUN mvn clean install
 
-FRIM openjdk:21-slim
+FROM openjdk:21-slim
 COPY --from=build /target/*.jar ./beprepared.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "beprepared.jar"]
